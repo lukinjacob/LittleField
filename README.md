@@ -2,7 +2,7 @@
 
 A browser-based automated data scraper that fetches transaction history from an API endpoint and downloads the results as numbered Excel (`.xlsx`) files on a configurable schedule.
 
-**🌐 Live Site:** [https://lukinjacob.github.io/data-scraper/](https://lukinjacob.github.io/data-scraper/)
+**🌐 Live Site:** [https://lukinjacob.github.io/LittleField/](https://lukinjacob.github.io/LittleField/)
 
 ---
 
