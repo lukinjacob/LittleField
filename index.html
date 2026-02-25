@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Scraper Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <!-- SheetJS library to create .xlsx files from JSON -->
     <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -21,20 +20,19 @@
             <div class="form-group">
                 <label for="apiUrl">API Endpoint URL</label>
                 <input
-                    type="text"
+                    type="password"
                     id="apiUrl"
-                    value="https://opy.responsive.net/lfbackend/downloadhistory"
-                    placeholder="Enter API URL"
+                    placeholder="Paste your API URL here"
                 >
             </div>
 
             <div class="form-group">
                 <label for="bearerToken">Bearer Token</label>
-                <textarea
+                <input
+                    type="password"
                     id="bearerToken"
-                    rows="3"
                     placeholder="Paste your Bearer token here"
-                >eyJhbGciOiJIUzI1NiJ9.eyJpbnN0aXR1dGlvbiI6InB5a2UzIiwiaWQiOiJmcmFuY2lzY29fY2FybmVAYmVya2VsZXkuZWR1IiwiaXNNb2JpbGUiOmZhbHNlLCJwbG90V2l0aEhUTUw1IjpmYWxzZSwicm9sZSI6InN0dWRlbnQiLCJ0ZWFtSWQiOiJMaXR0bGVzSW5MYXdzIiwic3ViIjoiZnJhbmNpc2NvX2Nhcm5lQGJlcmtlbGV5LmVkdSIsImlhdCI6MTc3MTgwMzMyNiwiZXhwIjoxNzcyNDA4MTI2fQ.ozazswnetYsRXOn8bA4z7kJuH6exPddFQzPUBuUuvFs</textarea>
+                >
             </div>
 
             <div class="form-row">
@@ -61,16 +59,13 @@
         </div>
 
         <div class="controls">
-            <button id="startBtn" class="btn btn-start" onclick="startScraper()">
+            <button id="startBtn" class="btn btn-start">
                 ▶️ Start Scraper
             </button>
-            <button id="fetchOnceBtn" class="btn btn-fetch" onclick="fetchOnce()">
-                📥 Fetch Once
-            </button>
-            <button id="stopBtn" class="btn btn-stop" onclick="stopScraper()" disabled>
+            <button id="stopBtn" class="btn btn-stop" disabled>
                 ⏹️ Stop Scraper
             </button>
-            <button class="btn btn-clear" onclick="clearLog()">
+            <button id="clearBtn" class="btn btn-clear">
                 🗑️ Clear Log
             </button>
         </div>
