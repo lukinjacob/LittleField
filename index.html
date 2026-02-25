@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Scraper Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- SheetJS library to create .xlsx files from JSON -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Data Scraper Dashboard</h1>
+            <p class="subtitle">Automated transaction history downloader</p>
+        </header>
+
+        <div class="config-panel">
+            <h2>⚙️ Configuration</h2>
+
+            <div class="form-group">
+                <label for="apiUrl">API Endpoint URL</label>
+                <input
+                    type="text"
+                    id="apiUrl"
+                    value="https://opy.responsive.net/lfbackend/downloadhistory"
+                    placeholder="Enter API URL"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="bearerToken">Bearer Token</label>
+                <textarea
+                    id="bearerToken"
+                    rows="3"
+                    placeholder="Paste your Bearer token here"
+                >eyJhbGciOiJIUzI1NiJ9.eyJpbnN0aXR1dGlvbiI6InB5a2UzIiwiaWQiOiJmcmFuY2lzY29fY2FybmVAYmVya2VsZXkuZWR1IiwiaXNNb2JpbGUiOmZhbHNlLCJwbG90V2l0aEhUTUw1IjpmYWxzZSwicm9sZSI6InN0dWRlbnQiLCJ0ZWFtSWQiOiJMaXR0bGVzSW5MYXdzIiwic3ViIjoiZnJhbmNpc2NvX2Nhcm5lQGJlcmtlbGV5LmVkdSIsImlhdCI6MTc3MTgwMzMyNiwiZXhwIjoxNzcyNDA4MTI2fQ.ozazswnetYsRXOn8bA4z7kJuH6exPddFQzPUBuUuvFs</textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fileStart">File Start Number</label>
+                    <input type="number" id="fileStart" value="50" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="fileEnd">File End Number</label>
+                    <input type="number" id="fileEnd" value="104" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="interval">Interval (minutes)</label>
+                    <input type="number" id="interval" value="60" min="1">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="useCorsProxy">
+                    Use CORS Proxy (enable if you get CORS errors)
+                </label>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn btn-start" onclick="startScraper()">
+                ▶️ Start Scraper
+            </button>
+            <button id="fetchOnceBtn" class="btn btn-fetch" onclick="fetchOnce()">
+                📥 Fetch Once
+            </button>
+            <button id="stopBtn" class="btn btn-stop" onclick="stopScraper()" disabled>
+                ⏹️ Stop Scraper
+            </button>
+            <button class="btn btn-clear" onclick="clearLog()">
+                🗑️ Clear Log
+            </button>
+        </div>
+
+        <div class="status-panel">
+            <div class="status-grid">
+                <div class="status-card">
+                    <span class="status-label">Status</span>
+                    <span class="status-value" id="statusText">⏸️ Idle</span>
+                </div>
+                <div class="status-card">
+                    <span class="status-label">Current File</span>
+                    <span class="status-value" id="currentFile">—</span>
+                </div>
+                <div class="status-card">
+                    <span class="status-label">Progress</span>
+                    <span class="status-value" id="progress">0 / 0</span>
+                </div>
+                <div class="status-card">
+                    <span class="status-label">Next Fetch</span>
+                    <span class="status-value" id="nextFetch">—</span>
+                </div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="log-panel">
+            <h2>📋 Activity Log</h2>
+            <div id="logContainer" class="log-container">
+                <div class="log-entry log-info">
+                    Scraper ready. Configure your settings and press Start.
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                ⚠️ Keep this tab open for the scheduler to work.
+                Token expires periodically — update it when you get 401 errors.
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
