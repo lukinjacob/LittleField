@@ -66,6 +66,7 @@ header h1 {
 
 .form-group input[type="text"],
 .form-group input[type="number"],
+.form-group input[type="password"],
 .form-group textarea {
     width: 100%;
     padding: 10px 14px;
@@ -128,11 +129,6 @@ header h1 {
 
 .btn-start {
     background: linear-gradient(135deg, #28a745, #20c997);
-    color: #fff;
-}
-
-.btn-fetch {
-    background: linear-gradient(135deg, #007bff, #6f42c1);
     color: #fff;
 }
 
